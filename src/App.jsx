@@ -1,14 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import FormularioPregunta from './components/FormularioPregunta';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [preguntas, setPreguntas] = useState([]);
+  let idActualPregunta = 0;
+
+  const addQuestion = (nueva) => {
+    nueva.id = idActualPregunta;
+    console.log(nueva);
+    idActualPregunta++;
+    console.log(idActualPregunta);
+    setPreguntas([...preguntas, nueva]);
+  }
 
   return (
     <>
       <h1>Hola</h1>
+      <FormularioPregunta crearPregunta={addQuestion} />
     </>
   )
 }
