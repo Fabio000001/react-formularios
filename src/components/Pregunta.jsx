@@ -1,9 +1,12 @@
-function Pregunta(props) {
-    const { pregunta, borrarPregunta } = props;
+import { PreguntasContext } from "../App";
+import { useContext } from "react";
+
+function Pregunta({ pregunta }) {
+    const { removeQuestion } = useContext(PreguntasContext);
 
     return (
         <div className="card" style={{ width: "18rem" }} >
-            <button type="button" className="align-baseline btn-close" aria-label="Close" onClick={() => borrarPregunta(pregunta)}></button>
+            <button type="button" className="align-baseline btn-close" aria-label="Close" onClick={() => removeQuestion(pregunta)}></button>
             <div className="card-body">
                 <h5 className="card-title">Pregunta nº{pregunta.id}</h5>
                 <h6 className="card-subtitle mb-2 text-body-secondary">{pregunta.enunciado}</h6>

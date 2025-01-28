@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, createContext } from 'react';
 import FormularioPregunta from './components/FormularioPregunta';
 import './App.css';
 import PreguntasCreadas from './components/PreguntasCreadas';
 
+export const PreguntasContext = createContext();
 let idActualPregunta = 0;
 
 function App() {
@@ -22,8 +23,10 @@ function App() {
   return (
     <>
       <h1>Hola</h1>
-      <FormularioPregunta crearPregunta={addQuestion} />
-      <PreguntasCreadas preguntas={preguntas} borrarPreguntas={removeQuestion} />
+      <PreguntasContext.Provider value={{ preguntas, removeQuestion }}>
+        <FormularioPregunta crearPregunta={addQuestion} />
+        <PreguntasCreadas />
+      </PreguntasContext.Provider>
     </>
   )
 }

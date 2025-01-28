@@ -1,14 +1,16 @@
 import Pregunta from "./Pregunta";
+import { PreguntasContext } from "../App";
+import { useContext } from "react";
 
-const PreguntasCreadas = (props) => {
-    const { preguntas, borrarPreguntas } = props;
+const PreguntasCreadas = () => {
+    const { preguntas } = useContext(PreguntasContext);
 
     return (
         <div>
             <ul className="list-group">
                 {
                     preguntas.map(p => {
-                        return (<Pregunta key={p.id} pregunta={p} borrarPregunta={borrarPreguntas} />)
+                        return (<Pregunta key={p.id} pregunta={p} />)
                     })
                 }
             </ul>
