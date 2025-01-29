@@ -1,23 +1,25 @@
-import { useState, createContext } from 'react';
+import { createContext, useReducer } from 'react';
 import FormularioPregunta from './components/FormularioPregunta';
 import './App.css';
 import PreguntasCreadas from './components/PreguntasCreadas';
+import preguntasReducer from './hooks/preguntasReducer';
 
 export const PreguntasContext = createContext();
 let idActualPregunta = 0;
 
 function App() {
-  const [preguntas, setPreguntas] = useState([]);
+  const [preguntas, dispatch] = useReducer(preguntasReducer, []);
+  console.log(preguntas);
 
   const addQuestion = (nueva) => {
     nueva.id = idActualPregunta;
     console.log(nueva);
     idActualPregunta++;
-    setPreguntas([...preguntas, nueva]);
+    dispatch({ tipo: "agregar_pregunta", nuevaPregunta: nueva });
   }
 
   const removeQuestion = (seleccionada) => {
-    setPreguntas(preguntas.filter(p => p.id != seleccionada.id));
+    dispatch({ tipo: "eliminar_pregunta", preguntaId: seleccionada.id });
   }
 
   return (
