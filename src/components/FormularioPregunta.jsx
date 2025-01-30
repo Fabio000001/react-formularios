@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Swal from "sweetalert2";
+import { PreguntasContext } from "../contexts/PreguntasProvider";
 
-function FormularioPregunta({ crearPregunta }) {
+function FormularioPregunta() {
+    const { addQuestion } = useContext(PreguntasContext);
+
     const [pregunta, setPregunta] = useState({
         enunciado: "Enunciado",
         respuesta1: "Respuesta1",
@@ -15,7 +18,7 @@ function FormularioPregunta({ crearPregunta }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        crearPregunta({ ...pregunta });
+        addQuestion({ ...pregunta });
 
         Swal.fire({
             position: "top-end",

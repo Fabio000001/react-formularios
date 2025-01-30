@@ -1,5 +1,5 @@
 import Pregunta from "./Pregunta";
-import { PreguntasContext } from "../App";
+import { PreguntasContext } from "../contexts/PreguntasProvider";
 import { useContext } from "react";
 
 const PreguntasCreadas = () => {

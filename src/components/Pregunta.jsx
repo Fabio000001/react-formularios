@@ -1,4 +1,4 @@
-import { PreguntasContext } from "../App";
+import { PreguntasContext } from "../contexts/PreguntasProvider";
 import { useContext } from "react";
 
 function Pregunta({ pregunta }) {
