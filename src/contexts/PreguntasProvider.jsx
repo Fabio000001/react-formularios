@@ -4,11 +4,10 @@ import preguntasReducer from "../hooks/preguntasReducer";
 export const PreguntasContext = createContext();
 
 export default function PreguntasProvider({ children }) {
-    const [preguntas, dispatch] = useReducer(preguntasReducer, []);
-    console.log(preguntas.length);
+    const [preguntas, dispatch] = useReducer(preguntasReducer, { lista: [], idSiguiente: 0 });
 
     const addQuestion = (nueva) => {
-        nueva.id = preguntas.length;
+        nueva.id = preguntas.idSiguiente;
         console.log(nueva);
         dispatch({ tipo: "agregar_pregunta", nuevaPregunta: nueva });
     }

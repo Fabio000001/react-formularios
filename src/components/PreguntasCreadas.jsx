@@ -9,7 +9,7 @@ const PreguntasCreadas = () => {
         <div>
             <ul className="list-group">
                 {
-                    preguntas.map(p => {
+                    preguntas.lista.map(p => {
                         return (<Pregunta key={p.id} pregunta={p} />)
                     })
                 }
